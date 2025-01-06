@@ -83,4 +83,4 @@
 
 ### Made with ❤️ by [zebbern](https://github.com/zebbern)
 
-### sh freedium.cfd for providing the full pages
+### sh to freedium.cfd for providing the full pages
