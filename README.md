@@ -17,7 +17,7 @@
 // @name         Medium UNLOCK Button (Bottom Right)
 // @namespace    https://tampermonkey.net/
 // @version      1.1
-// @description  Adds a professional-looking "UNLOCK" button on Medium /github.com/zebbern for more
+// @description  Adds a professional-looking "UNLOCK" button on Medium github.com/zebbern for more
 // @match        *://medium.com/*
 // @match        *://*.medium.com/*
 // @grant        none
