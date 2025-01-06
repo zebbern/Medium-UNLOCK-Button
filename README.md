@@ -1,7 +1,4 @@
-
-# Medium UNLOCK Button (Tampermonkey)
-
-## Installation
+# Installation
 
 1. **Install [Tampermonkey](https://tampermonkey.net/).**  
    Works with Chrome, Firefox, and more.
