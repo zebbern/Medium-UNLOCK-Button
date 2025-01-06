@@ -4,10 +4,11 @@
    Works with Chrome, Firefox, and more.
 
 2. Go to extensions and enable developer mode or else it wont work
+---
 ![image](https://github.com/user-attachments/assets/014993ae-db63-43c7-8abd-9417c55b33ff)
 
 
-4. **Create a New Script** in Tampermonkey.  
+3. **Create a New Script** in Tampermonkey.  
    - Copy the script below.  
    - Save and enable.
 
