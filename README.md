@@ -16,8 +16,8 @@
 // ==UserScript==
 // @name         Medium UNLOCK Button (Bottom Right)
 // @namespace    https://tampermonkey.net/
-// @version      1.0
-// @description  Adds a simple "UNLOCK" button on Medium pages to redirect to Freedium
+// @version      1.1
+// @description  Adds a professional-looking "UNLOCK" button on Medium https://github.com/zebbern for more!
 // @match        *://medium.com/*
 // @match        *://*.medium.com/*
 // @grant        none
@@ -26,13 +26,15 @@
 (function() {
     'use strict';
 
+    // Create the UNLOCK button
     const unlockBtn = document.createElement('button');
     unlockBtn.textContent = 'UNLOCK';
 
+    // Base styling
     unlockBtn.style.position = 'fixed';
     unlockBtn.style.bottom = '20px';
     unlockBtn.style.right = '20px';
-    unlockBtn.style.zIndex = '9999';
+    unlockBtn.style.zIndex = '999999';  // ensure it's on top
     unlockBtn.style.padding = '12px 18px';
     unlockBtn.style.fontSize = '14px';
     unlockBtn.style.fontFamily = 'sans-serif';
@@ -45,6 +47,7 @@
     unlockBtn.style.opacity = '0.9';
     unlockBtn.style.transition = 'all 0.2s ease';
 
+    // Hover effect
     unlockBtn.addEventListener('mouseenter', () => {
         unlockBtn.style.opacity = '1';
         unlockBtn.style.transform = 'translateY(-2px)';
@@ -56,11 +59,16 @@
         unlockBtn.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.2)';
     });
 
+    // When clicked, redirect to Freedium
     unlockBtn.addEventListener('click', () => {
+        // Remove the protocol (https:// or http://)
         const withoutProtocol = window.location.href.replace(/^https?:\/\//, '');
-        window.location.href = 'https://freedium.cfd/' + withoutProtocol;
+        // Construct the Freedium URL
+        const freediumUrl = 'https://freedium.cfd/' + withoutProtocol;
+        window.location.href = freediumUrl;
     });
 
+    // Insert the button into the page
     document.body.appendChild(unlockBtn);
 })();
 ```
