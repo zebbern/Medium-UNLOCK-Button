@@ -15,27 +15,35 @@
 
 ```javascript
 // ==UserScript==
-// @name         Medium UNLOCK Button (Bottom Right)
+// @name         Medium UNLOCK Button (COM Only)
 // @namespace    https://tampermonkey.net/
-// @version      1.1
+// @version      1.0
 // @description  Adds a "UNLOCK" button on Medium github.com/zebbern for more
-// @match        *://medium.com/*
-// @match        *://*.medium.com/*
+// @match        *://*/*
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // Create the UNLOCK button
+    const host = window.location.hostname.toLowerCase();
+
+    // Show button ONLY if:
+    // 1) The domain includes "medium"
+    // 2) The domain ends with ".com"
+    if (!host.includes('medium') || !host.endsWith('.com')) {
+        return; // Do nothing
+    }
+
+    // Create UNLOCK button
     const unlockBtn = document.createElement('button');
     unlockBtn.textContent = 'UNLOCK';
 
-    // Base styling
+    // Basic styling
     unlockBtn.style.position = 'fixed';
     unlockBtn.style.bottom = '20px';
     unlockBtn.style.right = '20px';
-    unlockBtn.style.zIndex = '999999';  // ensure it's on top
+    unlockBtn.style.zIndex = '9999';
     unlockBtn.style.padding = '12px 18px';
     unlockBtn.style.fontSize = '14px';
     unlockBtn.style.fontFamily = 'sans-serif';
@@ -60,18 +68,16 @@
         unlockBtn.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.2)';
     });
 
-    // When clicked, redirect to Freedium
+    // On click, redirect to Freedium
     unlockBtn.addEventListener('click', () => {
-        // Remove the protocol (https:// or http://)
         const withoutProtocol = window.location.href.replace(/^https?:\/\//, '');
-        // Construct the Freedium URL
-        const freediumUrl = 'https://freedium.cfd/' + withoutProtocol;
-        window.location.href = freediumUrl;
+        window.location.href = 'https://freedium.cfd/' + withoutProtocol;
     });
 
-    // Insert the button into the page
+    // Add button to the page
     document.body.appendChild(unlockBtn);
 })();
+
 ```
 
 ## Usage
